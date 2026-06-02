@@ -573,7 +573,7 @@ src="https://www.facebook.com/tr?id=681258031361374&ev=PageView&noscript=1"/></n
 
 <script>
 // ── Google Apps Script endpoint (reemplazar con tu URL después de publicar) ──
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxwFdGOqk-AR7aovTKb50HLdiV99rd_yzBy56bu03xGKADM28uoBSBwn9lZlE4M8UM/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzTufBvPKs-fOYikOkNGx0ky69qy4vlrAix6LimVONqXpZBB1HrV6OhGrR-OOt-K0pH/exec';
 
 // ── WhatsApp ──
 const WA_NUMBER = '522286070653';
@@ -619,12 +619,8 @@ function registrar(source) {
 
 function guardarRegistro(nombre, correo, fecha) {
   if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'TU_APPS_SCRIPT_URL_AQUI') return;
-  fetch(APPS_SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ nombre, correo, fecha })
-  }).catch(() => {});
+  var params = '?nombre=' + encodeURIComponent(nombre) + '&correo=' + encodeURIComponent(correo) + '&fecha=' + encodeURIComponent(fecha);
+  fetch(APPS_SCRIPT_URL + params, { method: 'GET', mode: 'no-cors' }).catch(() => {});
 }
 
 // ── Fade-up on scroll ──
