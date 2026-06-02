@@ -79,7 +79,7 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 
 /* HERO */
 .hero{min-height:100vh;padding:60px 24px 80px;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(189,255,0,0.07) 0%,transparent 70%);pointer-events:none;}
+.hero::before{display:none;}
 .hero-content{max-width:640px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:24px;position:relative;z-index:1;}
 
 .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(189,255,0,0.1);border:1px solid rgba(189,255,0,0.3);padding:6px 16px;border-radius:2px;width:fit-content;}
@@ -109,8 +109,8 @@ h1 em{color:var(--neon);font-style:normal;display:block;}
 
 /* FORM */
 .form-wrap{display:flex;flex-direction:column;gap:12px;}
-.form-wrap input{background:var(--mid);border:1px solid var(--gray);border-radius:2px;padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--white);width:100%;transition:border-color 0.2s;outline:none;}
-.form-wrap input::placeholder{color:#555;}
+.form-wrap input{background:#ffffff;border:1px solid #444;border-radius:2px;padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--black);width:100%;transition:border-color 0.2s;outline:none;}
+.form-wrap input::placeholder{color:#999;}
 .form-wrap input:focus{border-color:var(--neon);}
 .btn-register{background:var(--neon);color:var(--black);border:none;padding:18px 32px;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;cursor:pointer;width:100%;border-radius:2px;transition:transform 0.15s,box-shadow 0.15s;display:flex;align-items:center;justify-content:center;gap:10px;}
 .btn-register:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(189,255,0,0.3);}
@@ -190,8 +190,8 @@ footer p{font-size:12px;color:#444;letter-spacing:1px;}
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-inner">
-    <span>SÁBADO 13 DE JUNIO</span><span>10:06 AM CDMX</span><span>CLASE EN VIVO</span><span>REGÍSTRATE GRATIS</span><span>PROMOCIÓN HORIZONTAL 2026</span><span>USICAMM</span>
-    <span>SÁBADO 13 DE JUNIO</span><span>10:06 AM CDMX</span><span>CLASE EN VIVO</span><span>REGÍSTRATE GRATIS</span><span>PROMOCIÓN HORIZONTAL 2026</span><span>USICAMM</span>
+    <span>SÁBADO 13 DE JUNIO</span><span>10:06 AM</span><span>CLASE EN VIVO</span><span>REGÍSTRATE GRATIS</span><span>PROMOCIÓN HORIZONTAL 2026</span><span>USICAMM</span>
+    <span>SÁBADO 13 DE JUNIO</span><span>10:06 AM</span><span>CLASE EN VIVO</span><span>REGÍSTRATE GRATIS</span><span>PROMOCIÓN HORIZONTAL 2026</span><span>USICAMM</span>
   </div>
 </div>
 
@@ -200,12 +200,17 @@ footer p{font-size:12px;color:#444;letter-spacing:1px;}
   <div class="hero-content">
     <div class="badge"><div class="badge-dot"></div><span>Clase gratuita en vivo</span></div>
     <h1>Las Claves para<em>Ganar la PH</em>en USICAMM</h1>
-    <p class="sub">Aprende exactamente <strong>qué estudiar, cómo responder y qué cambió</strong> en el nuevo examen de Promoción Horizontal 2026 — antes de que sea tarde.</p>
-    <p style="font-size:13px;color:#666;font-weight:300;line-height:1.6;">Para <strong style="color:#999;font-weight:500;">docentes, directivos, ATP y supervisores</strong> de educación básica registrados al proceso de Promoción Horizontal USICAMM 2026.</p>
     <div class="date-bar">
       <div class="date-bar-icon">📅</div>
       <div class="date-bar-text">Sábado <span>13 de junio</span> · <span>10:06 AM</span> hora CDMX · Clase en vivo por WhatsApp</div>
     </div>
+    <div class="form-wrap">
+      <input type="text" id="nombre-hero" placeholder="Tu nombre" required>
+      <button class="btn-register" onclick="registrar('hero')">QUIERO MI LUGAR →</button>
+      <p class="form-note">Acceso gratuito · Solo para participantes registrados en el proceso PH 2026</p>
+    </div>
+    <p class="sub">Aprende exactamente <strong>qué estudiar, cómo responder y qué cambió</strong> en el nuevo examen de Promoción Horizontal 2026 — antes de que sea tarde.</p>
+    <p style="font-size:13px;color:#666;font-weight:300;line-height:1.6;">Para <strong style="color:#999;font-weight:500;">docentes, directivos, ATP y supervisores</strong> de educación básica registrados al proceso de Promoción Horizontal USICAMM 2026.</p>
     <div class="countdown-wrap">
       <p class="countdown-label">La clase comienza en</p>
       <div class="countdown-timer">
@@ -217,12 +222,6 @@ footer p{font-size:12px;color:#444;letter-spacing:1px;}
         <div class="countdown-sep">:</div>
         <div class="countdown-unit"><span class="countdown-num" id="cd-secs-hero">00</span><span class="countdown-sublabel">Segundos</span></div>
       </div>
-    </div>
-    <div class="form-wrap">
-      <input type="text" id="nombre-hero" placeholder="Tu nombre" required>
-      <input type="email" id="correo-hero" placeholder="Tu correo electrónico" required>
-      <button class="btn-register" onclick="registrar('hero')">QUIERO MI LUGAR →</button>
-      <p class="form-note">Acceso gratuito · Solo para participantes registrados en el proceso PH 2026</p>
     </div>
   </div>
 </section>
@@ -321,7 +320,6 @@ footer p{font-size:12px;color:#444;letter-spacing:1px;}
     </div>
     <div class="form-wrap">
       <input type="text" id="nombre-final" placeholder="Tu nombre" required>
-      <input type="email" id="correo-final" placeholder="Tu correo electrónico" required>
       <button class="btn-register" onclick="registrar('final')">ASEGURAR MI LUGAR →</button>
       <p class="form-note">Acceso gratuito · Sin spam · Solo el acceso al grupo</p>
     </div>
